@@ -2,19 +2,25 @@ module.exports = {
     title: 'Yu Niu',
     description: '希望能在前端这条路上一直奔跑\nLife is beautiful, Peace',
     head: [
-      ['link', { rel: 'icon', href: '/favicon.ico' }], // 增加一个自定义的 favicon(网页标签的图标)
+      ['link', { rel: 'icon', href: '/myicon.ico' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1'}],
     ],
-    base: '/YuNiuyn.github.io/', // 这是部署到github相关的配置 下面会讲
+    base: '/YuNiuyn.github.io/',
     markdown: {
-      lineNumbers: true // 代码块显示行号
+      lineNumbers: true
     },
     themeConfig: {
         nav: [
             { text: 'Home', link: '/' },
-            { text: 'Guide', link: '/guide/' },
-            { text: 'External', link: 'https://google.com' },
-            { text: 'GitHub', link: 'https://github.com/YuNiuyn' }
+            { text: 'Front End', link: '/guide/' },
+            { text: 'Mini Program',
+              items: [
+                { text: '微信小程序', link: '' },
+                { text: '支付宝小程序', link: '' }
+              ]
+            },
+            { text: 'GitHub', link: 'https://github.com/YuNiuyn' },
+            { text: 'About Me', link: '' }
         ],
       lastUpdated: 'Last Updated' // 文档更新时间：每个文件git最后提交的时间
     }
