@@ -5,5 +5,5 @@ cd docs/.vuepress/dist
 git init
 git add -A
 git commit -m 'deploy'
-git push -f https://github.com/YuNiuyn/YuNiuyn.github.io.git master
+git push -f https://github.com/YuNiuyn/YuNiuBlog.git master:gh-pages
 cd -
