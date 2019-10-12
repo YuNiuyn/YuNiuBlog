@@ -15,16 +15,16 @@ module.exports = {
             { text: 'Home', link: '/' },
             { text: 'Front End',
               items: [
-                { text: 'Vue', link: '' },
-                { text: 'JavaScript', link: ''},
-                { text: 'VuePress', link: '' },
-                { text: '其它', link: '/MarkDown and Typora.md' }
+                { text: 'Vue', link: '/Vue_Blog/README.md' },
+                { text: 'JavaScript', link: '/JavaScript_Blog/README.md/'},
+                { text: 'VuePress', link: '/VuePress_Blog/README.md' },
+                { text: '其它', link: '/Others_Blog/README.md' }
               ]
             },
             { text: 'Mini Program',
               items: [
-                { text: '微信小程序', link: '' },
-                { text: '支付宝小程序', link: '' }
+                { text: 'WeChat', link: '/WeChat_miniPro/README.md' },
+                { text: 'Ali', link: '/Ali_miniPro/README.md' }
               ]
             },
             { text: 'About Me', link: 'https://github.com/YuNiuyn' }
@@ -36,7 +36,9 @@ module.exports = {
       docsDir: 'docs',
       docsBranch: 'master',
       editLinks: true,
-      editLinkText: '在 GitHub 上编辑此页'
+      editLinkText: '在 GitHub 上编辑此页',
+      sidebar: 'auto',
+
     },
     markdown: {
       config: md => {
