@@ -42,7 +42,7 @@ module.exports = {
       // sidebar: 'auto',
       sidebar: {
         '/Vue_Blog/': [
-          '',
+          ''
         ],
         '/JavaScript_Blog/': [
           '',
@@ -57,10 +57,10 @@ module.exports = {
           'MarkDown_and_Typora'
         ],
         '/WeChat_miniPro/': [
-          '',
+          ''
         ],
         '/Ali_miniPro/': [
-          '',
+          ''
         ],
         '/': [
           '',       
@@ -71,9 +71,9 @@ module.exports = {
           ['/WeChat_miniPro/', '微信小程序'],
           ['/Ali_miniPro/', '支付宝小程序']
         ]
-      },
-      plugins: [
-        '@vuepress/back-to-top',
-      ]
+      }
+      // plugins: [
+      //   '@vuepress/back-to-top',
+      // ]
     }
 };

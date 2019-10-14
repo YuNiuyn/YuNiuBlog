@@ -114,6 +114,25 @@ success [10:24:47] Build a54eb8 finished in 90 ms! ( http://localhost:8080/ )
 
 
 
+### 插件
+
+#### 官方插件
+
+-   ``back-to-top`` ：@vuepress/plugin-back-to-top
+
+    -   安装：
+
+        ```bash
+        npm install -D @vuepress/plugin-back-to-top@next
+        # 或 yarn add -D @vuepress/plugin-back-to-top@next
+        ```
+
+        >   此时有个小坑，npm install -D 的是 写入devDependencies， 里面的插件只用于开发环境，不用于生产环境 
+
+        >-S 的是 写入dependencies ， 是需要发布到生产环境的
+
+
+
 ## 将Blog部署到GitHub上
 
 [VuePress 部署](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages)
