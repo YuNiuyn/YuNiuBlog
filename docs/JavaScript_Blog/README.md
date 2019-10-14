@@ -1,9 +1,1 @@
----
-footer: MIT Licensed | Copyright © 2019-present YuNiu
----
-
-
-
-hi, test 
-
-test
+# JavaScript 学习记录

@@ -18,9 +18,9 @@
 
 ## 功能点
 
-![img](https://upload-images.jianshu.io/upload_images/6149171-e2eeab313bcf70fa?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
+![img](./mdTr/md1.png)
 
-![img](https://upload-images.jianshu.io/upload_images/6149171-b1375313b350d7e8?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
+![img](./mdTr/md2.png)
 
 
 
