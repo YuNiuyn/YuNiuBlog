@@ -24,8 +24,8 @@ module.exports = {
           },
           { text: 'Mini Program',
             items: [
-              { text: '微信小程序', link: '/WeChat_miniPro/' },
-              { text: '支付宝小程序', link: '/Ali_miniPro/' }
+              { text: '微信小程序', link: '/WeChat_minipro/' },
+              { text: '支付宝小程序', link: '/Ali_minipro/' }
             ]
           },
           { text: 'About Me', link: 'https://github.com/YuNiuyn' }
@@ -68,8 +68,8 @@ module.exports = {
           ['/JavaScript_Blog/', 'JavaScript'],
           ['/VuePress_Blog/', 'VuePress'],
           ['/Others_Blog/', '其它'],
-          ['/WeChat_miniPro/', '微信小程序'],
-          ['/Ali_miniPro/', '支付宝小程序']
+          ['/WeChat_minipro/', '微信小程序'],
+          ['/Ali_minipro/', '支付宝小程序']
         ]
       }
       // plugins: [
