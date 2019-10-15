@@ -8,7 +8,7 @@ module.exports = {
     base: '/YuNiuBlog/',
     markdown: {
       lineNumbers: true,
-      toc: { includeLevel: [2, 3] }
+      toc: { includeLevel: [2, 4] }
     },
     port: 9494,
     themeConfig: {
@@ -24,8 +24,8 @@ module.exports = {
           },
           { text: 'Mini Program',
             items: [
-              { text: '微信小程序', link: '/WeChat_minipro/' },
-              { text: '支付宝小程序', link: '/Ali_minipro/' }
+              { text: '微信小程序', link: '/WeChat_miniPro/' },
+              { text: '支付宝小程序', link: '/Ali_miniPro/' }
             ]
           },
           { text: 'About Me', link: 'https://github.com/YuNiuyn' }
@@ -37,9 +37,8 @@ module.exports = {
       docsDir: 'docs',
       docsBranch: 'master',
       editLinks: true,
-      editLinkText: '在 GitHub 上编辑此页',
+      editLinkText: '在GitHub上编辑此页',
       smoothScroll: true,
-      // sidebar: 'auto',
       sidebar: {
         '/Vue_Blog/': [
           ''
@@ -54,7 +53,8 @@ module.exports = {
         ],
         '/Others_Blog/': [
           '',
-          'MarkDown_and_Typora'
+          'MarkDown_and_Typora',
+          'Git'
         ],
         '/WeChat_miniPro/': [
           ''
@@ -62,18 +62,7 @@ module.exports = {
         '/Ali_miniPro/': [
           ''
         ],
-        '/': [
-          '',       
-          ['/Vue_Blog/', 'VUE'],
-          ['/JavaScript_Blog/', 'JavaScript'],
-          ['/VuePress_Blog/', 'VuePress'],
-          ['/Others_Blog/', '其它'],
-          ['/WeChat_minipro/', '微信小程序'],
-          ['/Ali_minipro/', '支付宝小程序']
-        ]
-      }
-      // plugins: [
-      //   '@vuepress/back-to-top',
-      // ]
+      },
+      plugins: ['@vuepress/back-to-top']
     }
 };
