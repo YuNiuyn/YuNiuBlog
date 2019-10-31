@@ -17,7 +17,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev docs",
-    "build": "node ./builds/addComponents.js && vuepress build docs && node ./builds/delComponents.js",
+    "build": "vuepress build docs",
     "deploy": "bash deploy.sh"
   },
   "keywords": [],
