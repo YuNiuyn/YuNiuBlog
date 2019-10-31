@@ -4,7 +4,7 @@
 
 ## 官方图例
 
-![](D:\Learned\GitRepos\YuNiuBlog\docs\Vue_Blog\Vue_img\lifecycle.png)
+![](./Vue_img/lifecycle.png)
 
 >   不建议使用箭头函数来定义生命周期方法
 
