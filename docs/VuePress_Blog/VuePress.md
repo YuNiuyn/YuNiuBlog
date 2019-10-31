@@ -170,6 +170,7 @@ git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+# gh-pages 是最终显示的项目文件分支，因此构建好的文件push到此分支
 
 cd -
 ```
@@ -185,6 +186,18 @@ cd -
     "deploy": "bash deploy.sh" # 部署项目 npm run deploy
 }
 ```
+
+
+
+-   配置好后，直接在本地仓库的根目录下运行
+
+```bash
+./deploy.sh
+```
+
+
+
+-   点击相关的 ``Github Pages`` 链接即可访问。
 
 
 
