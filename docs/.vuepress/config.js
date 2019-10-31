@@ -41,7 +41,8 @@ module.exports = {
       smoothScroll: true,
       sidebar: {
         '/Vue_Blog/': [
-          ''
+          '',
+          'Vue.js生命周期相关'
         ],
         '/JavaScript_Blog/': [
           '',
