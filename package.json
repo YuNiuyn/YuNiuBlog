@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "dependencies": {
+    "gitment": "0.0.3",
     "markdown-it": "^10.0.0",
     "vuepress": "^1.1.0"
   },
@@ -16,10 +17,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
+    "build": "node ./builds/addComponents.js && vuepress build docs && node ./builds/delComponents.js",
     "deploy": "bash deploy.sh"
   },
   "keywords": [],
-  "author": "",
+  "author": "YuNiu",
   "license": "ISC"
 }
