@@ -6,5 +6,7 @@
 
 ## 链接
 
-[Vue.js 生命周期相关](./Vue.js生命周期相关.md)
+[Vue.js](./Vue.js.md)
+
+[Vuex](./Vuex.md)
 

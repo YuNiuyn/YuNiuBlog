@@ -220,7 +220,11 @@ methods: {
 
 
 
-## computed 的 setter
+## 计算属性 computed
+
+
+
+###  computed 的 setter
 
  计算属性默认只有 getter ，也可以提供 setter
 
@@ -244,3 +248,28 @@ computed: {
 ```
 
  现在再运行 `vm.fullName = 'John Doe'` 时，setter 会被调用，`vm.firstName` 和 `vm.lastName` 也会相应地被更新。 
+
+
+
+### computed缓存
+
+
+-   基于依赖进行缓存。
+
+-   只有它的相关依赖发生改变时才会重新求值。
+
+-   假设依赖的 ``data`` 没有发生改变，``computed`` 都会立即返回之前的计算结果，而不必再次执行函数。
+
+-   ``Date.now()`` 不是响应式依赖，因此不会更新。
+
+    ```javascript
+    computed: {
+        now: function() {
+            return Date.now()
+        }
+    }
+    ```
+
+    
+
+    
