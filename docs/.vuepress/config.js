@@ -42,7 +42,8 @@ module.exports = {
       sidebar: {
         '/Vue_Blog/': [
           '',
-          'Vue.js生命周期相关'
+          'Vue.js',
+          'Vuex'
         ],
         '/JavaScript_Blog/': [
           '',

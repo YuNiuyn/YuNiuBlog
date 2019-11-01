@@ -148,3 +148,99 @@ var vm = new Vue({
 
 
 ## 生命周期相关知识点
+
+
+
+
+
+
+
+
+
+
+
+# Vue.js 事件
+
+
+
+## 事件处理
+
+### javascript 可直接引用实例里的方法
+
+```javascript
+var vm = new Vue({
+    el: 'app',
+    data:{
+        name: 'Vue.js'
+    },
+    methods:{
+        greet: function(event) {
+            console.log('Hi')
+        }
+    }
+})
+// 直接引用greet
+vm.greet()
+```
+
+
+
+### 内联语句处理器访问原始DOM事件
+
+-   用特殊变量 ``$event`` 把原始DOM传入方法中去
+
+```html
+<button v-on:click="warn('Form cannot be submitted yet.', $event)">
+  Submit
+</button>
+```
+
+```javascript
+// ...
+methods: {
+  warn: function (message, event) {
+    // 现在可以访问原生事件对象
+    if (event) event.preventDefault()
+    alert(message)
+  }
+}
+```
+
+
+
+### 事件修饰符，按键修饰符
+
+🔨ing...
+
+
+
+
+
+# 计算属性(computed)，方法(methods)，侦听器(watcher)
+
+
+
+## computed 的 setter
+
+ 计算属性默认只有 getter ，也可以提供 setter
+
+```javascript
+// ...
+computed: {
+  fullName: {
+    // getter
+    get: function () {
+      return this.firstName + ' ' + this.lastName
+    },
+    // setter
+    set: function (newValue) {
+      var names = newValue.split(' ')
+      this.firstName = names[0]
+      this.lastName = names[names.length - 1]
+    }
+  }
+}
+// ...
+```
+
+ 现在再运行 `vm.fullName = 'John Doe'` 时，setter 会被调用，`vm.firstName` 和 `vm.lastName` 也会相应地被更新。 
