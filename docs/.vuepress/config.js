@@ -47,6 +47,7 @@ module.exports = {
         ],
         '/JavaScript_Blog/': [
           '',
+          'JavaScript',
           '页面跳转url传参'
         ],
         '/VuePress_Blog/': [
@@ -56,7 +57,8 @@ module.exports = {
         '/Others_Blog/': [
           '',
           'MarkDown_and_Typora',
-          'Git'
+          'Git',
+          'Webpack'
         ],
         '/WeChat_miniPro/': [
           ''
