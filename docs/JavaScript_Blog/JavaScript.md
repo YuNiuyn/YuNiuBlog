@@ -1,6 +1,10 @@
-# JavaScipt ES6
+
 
 [toc]
+
+# JavaScipt ES6
+
+
 
 ## 函数调用
 
@@ -57,4 +61,16 @@
 
 -   ``call()`` 和 ``bind()`` 传入的参数是用 ``逗号 , `` 分割，``apply()`` 传入的是一个参数数组，需要将参数放入数组中去
 -   ``bind()`` 返回的是一个新的函数，因此要调用它需要执行
+
+
+
+
+
+
+
+# JavaScript 浏览器对象模型
+
+<img src="./img/js.jpg" alt="js组成" style="zoom:85%;" />
+
+ https://www.kancloud.cn/digest/web-basic/196456 
 
