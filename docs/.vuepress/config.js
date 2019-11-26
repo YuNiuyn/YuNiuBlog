@@ -67,6 +67,15 @@ module.exports = {
           ''
         ],
       },
-      plugins: ['@vuepress/back-to-top']
+      plugins: [
+        '@vuepress/back-to-top',
+        ['@vssue/vuepress-plugin-vssue', {
+          platform: 'github',
+          owner: 'YuNiuyn',
+          repo: 'YuNiuBlog',
+          clientId: '6cb636b554f085a166bd',
+          clientSecret: 'facac7da33bcc4c77bb121810cb9c661a09d1c45',
+        }],
+      ]
     }
 };
