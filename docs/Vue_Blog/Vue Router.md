@@ -114,3 +114,24 @@ export default [
 因为我们的应用是个单页客户端应用，所以需要后台正确的配置支持。否则容易404.
 
 所以要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 `index.html` 页面，这个页面就是 app 依赖的页面。
+
+
+
+
+
+## 监听路由变化
+
+```javascript
+let vm = new Vue({ // 监听路由变化
+    el: "#app",
+    data: {},
+    router,
+    watch: {
+        '$route.path': function (to, from) {
+        // to , from 分别表示从哪跳转到哪，都是一个对象
+        // to.path  ( 表示的是要跳转到的路由的地址 eg: /home );
+        }
+    }
+})
+```
+

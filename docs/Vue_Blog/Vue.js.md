@@ -285,6 +285,3 @@ computed: {
 
 
 # Vue 组件
-
-
-<Vssue title="Vue.js comments" />

@@ -64,6 +64,12 @@
 
 
 
+## function*
+
+-    这种声明方式(`function`关键字后跟一个星号）会定义一个***生成器函数\* (***generator function***)**，它返回一个  [`Generator`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator) 对象。
+-   Generator函数是ES6提供的一种异步编程解决方案
+-   
+
 
 
 
@@ -73,4 +79,20 @@
 <img src="./img/js.jpg" alt="js组成" style="zoom:85%;" />
 
  https://www.kancloud.cn/digest/web-basic/196456 
+
+
+
+
+
+# Web API
+
+
+
+### EventTarget.addEventListener()
+
+[MDN 链接]( https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener )
+
+**EventTarget.addEventListener()** 方法将指定的监听器注册到 [`EventTarget`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget) 上，当该对象触发指定的事件时，指定的回调函数就会被执行。 事件目标可以是一个文档上的元素 [`Element`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element),[`Document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document)和[`Window`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window)或者任何其他支持事件的对象 (比如 `XMLHttpRequest`)`。`
+
+`addEventListener()`的工作原理是将实现[`EventListener`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventListener)的函数或对象添加到调用它的[`EventTarget`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget)上的指定事件类型的事件侦听器列表中。
 
