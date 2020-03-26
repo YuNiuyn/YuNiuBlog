@@ -16,19 +16,23 @@ module.exports = {
           { text: 'Home', link: '/' },
           { text: 'Front End',
             items: [
-              { text: 'Vue', link: '/Vue_Blog/' },
               { text: 'JavaScript', link: '/JavaScript_Blog/'},
-              { text: 'VuePress', link: '/VuePress_Blog/' },
-              { text: '其它', link: '/Others_Blog/' }
             ]
           },
-          { text: 'Mini Program',
+          { text: 'Project',
             items: [
-              { text: '微信小程序', link: '/WeChat_miniPro/' },
-              { text: '支付宝小程序', link: '/Ali_miniPro/' }
+              { text: 'Vue', link: '/Vue_Blog/' },
+              { text: 'NodeJS', link: '/NodeJS_Blog/'},
+              { text: 'Webpack', link: '/Webpack_Blog/' },
             ]
           },
-          { text: 'About Me', link: 'https://github.com/YuNiuyn' }
+          { text: 'Mini Program', link: '/MiniProgram_Blog/'},
+          { text: 'Others', link: '/Others_Blog/'},
+            // items: [
+            //   { text: '微信小程序', link: '/WeChat_miniPro/' },
+            //   { text: '支付宝小程序', link: '/Ali_miniPro/' }
+            // ]
+          // { text: 'About Me', link: 'https://github.com/YuNiuyn' }
       ],
       lastUpdated: 'Last Updated',
       repo: 'YuNiuyn/YuNiuBlog',
@@ -40,31 +44,36 @@ module.exports = {
       editLinkText: '在GitHub上编辑此页',
       smoothScroll: true,
       sidebar: {
-        '/Vue_Blog/': [
-          '',
-          'Vue.js',
-          'Vuex'
-        ],
         '/JavaScript_Blog/': [
           '',
           'JavaScript',
-          '页面跳转url传参'
+          'jsES6',
+          'jsWEB'
         ],
-        '/VuePress_Blog/': [
+        '/Vue_Blog/': [
           '',
-          'VuePress'
+          'Vue.js',
+          'Vue Router',
+          'Vuex'
+        ],
+        '/NodeJS_Blog/': [
+          '',
+          'npm'
+        ],
+        '/Webpack_Blog/': [
+          '',
+          'Webpack'
+        ],
+        '/MiniProgram_Blog/': [
+          '',
+          '微信小程序',
+          '支付宝小程序'
         ],
         '/Others_Blog/': [
           '',
-          'MarkDown_and_Typora',
+          'MarkDown&Typora',
           'Git',
-          'Webpack'
-        ],
-        '/WeChat_miniPro/': [
-          ''
-        ],
-        '/Ali_miniPro/': [
-          ''
+          'VuePress'
         ],
       },
       plugins: [

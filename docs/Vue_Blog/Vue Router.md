@@ -1,8 +1,10 @@
-[toc]
-
 # Vue Router
 
 Vue Router 是 [Vue.js](http://cn.vuejs.org/) 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。
+
+[[toc]]
+
+[参考](https://router.vuejs.org/zh/)
 
 ## Vue Router 模块化路由配置
 
@@ -134,4 +136,114 @@ let vm = new Vue({ // 监听路由变化
     }
 })
 ```
+
+
+
+## 动态路由匹配
+
+
+
+### 动态路径参数
+
+```javascript
+const User = {
+  template: '<div>User</div>'
+}
+
+const router = new VueRouter({
+  routes: [
+    // 动态路径参数 以冒号开头
+    { path: '/user/:id', component: User }
+  ]
+})
+// 一个“路径参数”使用冒号 : 标记。当匹配到一个路由时，参数值会被设置到 this.$route.params，可以在每个组件内使用。
+const User = {
+  template: '<div>User {{ $route.params.id }}</div>'
+}
+```
+
+
+
+### 多段路径参数
+
+```javascript
+const router = new VueRouter({
+  routes: [
+    // 多段路径参数
+    { path: '/user/:username/post/:post_id',
+      name: 'user', // 命名路由
+      component: User,
+    }
+  ]
+});
+
+// 编程式导航
+router.push({ name: 'user', params: { username: 'Gary', post_id: '001' }});
+
+// 最终路由导航至 '/user/Gary/post/001'
+// PS: 如果提供了path而不是name，params会被忽略
+```
+
+
+
+
+
+
+
+## 编程式导航
+
+**在 Vue 实例内部，你可以通过 `this.$router` 访问路由实例。**
+
+
+
+#### router实例方法
+
+>   Vue Router 的导航方法 (`push`、 `replace`、 `go`) 在各类路由模式 (`history`、 `hash` 和 `abstract`) 下表现一致。
+
+```js
+// 向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL。
+router.push(location, onComplete?, onAbort?)
+router.push(location).then(onComplete).catch(onAbort)
+
+// 在 history 栈中替换掉当前的记录。
+router.replace(location, onComplete?, onAbort?)
+router.replace(location).then(onComplete).catch(onAbort)
+
+// 参数是一个整数，在 history 记录中向前或者后退多少步，类似 window.history.go(n)。
+// n > 0, 在浏览器记录中前进一步，等同于 history.forward()
+// n < 0, 在浏览器记录中后退一步，等同于 history.back()
+// 如果 history 记录不够用，就失败
+router.go(n)
+```
+
+#### 关于router.push和router-link 组件的 `to` 属性
+
+```javascript
+// 字符串
+router.push('home')
+
+// 对象
+router.push({ path: 'home' })
+
+// 命名的路由
+router.push({ name: 'user', params: { userId: '123' }})
+
+// 带查询参数，变成 /register?plan=private
+router.push({ path: 'register', query: { plan: 'private' }})
+```
+
+**注意：如果提供了 `path`，`params` 会被忽略，上述例子中的 `query` 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 `name` 或手写完整的带有参数的 `path`：**
+
+```javascript
+const userId = '123'
+// 可以通过名称来标识一个路由，在创建Router实例时，在routes配置中给某个路由设置名称。
+router.push({ name: 'user', params: { userId }}) // -> /user/123
+router.push({ path: `/user/${userId}` }) // -> /user/123
+// 这里的 params 不生效
+router.push({ path: '/user', params: { userId }}) // -> /user
+```
+
+>   在 3.1.0+，可以省略第二个和第三个参数，此时如果支持 Promise，`router.push` 或 `router.replace` 将返回一个 Promise。
+>
+>   如果目的地和当前路由相同，只有参数发生了改变 (比如从一个用户资料到另一个 `/users/1` =》`/users/2`)，你需要使用 [`beforeRouteUpdate`](https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html#响应路由参数的变化) 来响应这个变化 (比如抓取用户信息)。
 

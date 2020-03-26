@@ -18,7 +18,7 @@ VuePress显然是一个标准的Vue轻量级的应用程序，可以在 ``md文�
 
 [VuePress 手摸手教你搭建一个类Vue文档风格的技术文档/博客 作者：[**OBKoro1**]](https://segmentfault.com/a/1190000016333850)
 
-[TOC]
+[[toc]]
 
 ## 起步
 
