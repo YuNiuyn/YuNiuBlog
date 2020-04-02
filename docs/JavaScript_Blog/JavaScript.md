@@ -6,7 +6,7 @@
 
 ## js中的数组
 
-
+[Reference](https://mp.weixin.qq.com/s/Y_kEQstEeBh_lg5puHiLbg)
 
 ### 新建数组
 
@@ -158,13 +158,9 @@ console.log(_min); // 1
 
 -   **查找索引**
 
-
-
-`indexOf(arg1, arg2)`方法在数组中搜索元素值并返回其位置。arg1为搜索元素，arg2可选从哪里开始搜索。负值将从结尾开始的给定位置开始，并搜索到结尾。
-
-`lastIndexOf(arg1,arg2)` 与 indexOf() 类似，但是从数组结尾开始搜索。arg2可选从哪里开始搜索。负值将从结尾开始的给定位置开始，并搜索到开头。
-
-`findIndex()` 方法返回通过测试函数的第一个数组元素的索引
+    -   `indexOf(arg1, arg2)`方法在数组中搜索元素值并返回其位置。arg1为搜索元素，arg2可选从哪里开始搜索。负值将从结尾开始的给定位置开始，并搜索到结尾。
+    -   `lastIndexOf(arg1,arg2)` 与 indexOf() 类似，但是从数组结尾开始搜索。arg2可选从哪里开始搜索。负值将从结尾开始的给定位置开始，并搜索到开头。
+    -   `findIndex()` 方法返回通过测试函数的第一个数组元素的索引
 
 ```javascript
 let temp = [1,35,67,8];
@@ -299,49 +295,284 @@ console.log(find1); //35
 
 ### 数组排序
 
-对数组里的每个项进行操作
-
 -   **`sort` 数组排序**
 
     -   sort按照字母顺序对数组进行排序, 直接修改了源数组，所以可以不用再将返回值赋给其他变量。
-
-    -   该函数很适合字符串排序，如果数字按照字符串来排序，则 "25" 大于 "100"，因为 "2" 大于 "1"，正因如此，**sort()**方法在对数值排序时会产生不正确的结果。
-
+-   该函数很适合字符串排序，如果数字按照字符串来排序，则 "25" 大于 "100"，因为 "2" 大于 "1"，正因如此，**sort()**方法在对数值排序时会产生不正确的结果。
     -   可以通过修正比值函数对数值进行排序。比较函数的目的是定义另一种排序顺序。比较函数应该返回一个负，零或正值，当 sort() 函数比较两个值时，会将值发送到比较函数，并根据所返回的值（负、零或正值）对这些值进行排序。会更改源数组。
 
+    ```javascript
+    let temp = ["bi", "ci", "ai", "di"];
+    let sort1 = temp.sort(); // 可以不用复制给sort1, 直接执行temp.sort()这里是为方便大家直观比较
+    console.log(sort1, temp); // ["ai","bi","ci","di"], ["ai","bi","ci","di"]
+    
+    // sort比值函数修正：降序
+    let temp = [40, 100, 1, 5, 25, 10];
+    temp.sort(function(a, b){
+        return b-a;
+    });
+    console.log(temp); // [100, 40, 25, 10, 5, 1]
+    
+    // sort比值函数修正：升序
+    let temp = [40, 100, 1, 5, 25, 10];
+    temp.sort(function(a, b){
+        return a-b;
+    });
+    console.log(temp); // [1, 5, 10, 25, 40, 100]
+    ```
 
+-   `reverse` 数组反转
 
+    `reverse`反转数组中的元素，直接修改了源数组。
 
+    ```javascript
+    let temp = [1,3,2,4];
+    temp.reverse();
+    console.log(temp); // [4,2,3,1];
+    ```
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
+>   sort, reverse会更改源数组
 
 
 
 ### 数组迭代
 
+对数组里的每个项进行操作
+
+-   Array.forEach()
+
+    **forEach(function(arg1,arg2,arg3){})** 方法为每个数组元素调用一次函数（回调函数），arg1为数组元素值， arg2为数组元素索引，arg3为数组本身. 此方法不会更改源数组，也不会创建新数组。
+
+    ```javascript
+    let temp = [1,3,5];
+    temp.forEach(function(value, index, array){
+        console.log(value, index, array);
+    });
+    /***
+    *1 0 [1,3,5]
+    *3 1 [1,3,5]
+    *5 2 [1,3,5]
+    ***/
+    ```
+
+-   Array.map()
+
+    **map(function(arg1,arg2,arg3){})** 方法通过对每个数组元素执行函数来创建新数组，arg1为数组元素值， arg2为数组元素索引，arg3为数组本身，方法不会对没有值的数组元素执行函数. 不会更改源数组，创建一个新数组。
+
+    ```javascript
+    let temp = [1, 3, 5, , 9];
+    
+    //index， value不用时可以省略
+    let map1 = temp.map(function(value, index, array){ 
+        return value*2
+    });
+    console.log(map1);// [2, 6, 10, empty, 18]
+    ```
+
+-   Array.filter()
+
+    **filter(function(arg1,arg2,arg3){})** 方法创建一个包含通过指定条件的数组元素的新数组, arg1为数组元素值， arg2为数组元素索引，arg3为数组本身，不会更改源数组。
+
+    ```javascript
+    let temp = [1, 3, 5, 7, 9];
+    let filter1 = temp.filter(function(value){
+        return value > 5;
+    });
+    console.log(filter1); // [7, 9]
+    ```
+
+-   Array.every()
+
+    **every(function(arg1,arg2,arg3){})**方法测试数组的所有元素是否通过了置顶条件。arg1为数组元素值， arg2为数组元素索引，arg3为数组本身。不会更改源数组。
+
+    ```javascript
+    let temp = [3, 5, 7, 9];
+    <!-- 检查所有元素是否都大于1 -->
+    let every1 = temp.every((value) => {
+        return value > 1;
+    });
+    console.log(every1); //true
+    ```
+
+-   Array.some()
+
+    **some(function(arg1,arg2,arg3){})**方法测试数组中是否有元素通过了指定条件的测试。不会更改源数组。
+
+    ```javascript
+    let temp = [3, 5, 7, 9];
+    <!-- 检测数组中是否包含大于6的元素 -->
+    let some1 = temp.some(function(value){
+        return value > 6;
+    });
+    console.log(some1); // true
+    ```
+
+-   Array.reduce()
+
+    **reduce(function(arg1,arg2,arg3,arg4){})**接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始缩减，最终为一个值。
+
+    arg1上一次调用回调返回的值，或者是提供的初始值（initialValue）,arg2为数组元素值， arg3为数组元素索引，arg4为数组本身。不会更改源数组。
+
+    ```javascript
+    let temp = [3, 5, 7, 9];
+    let reduce1 = temp.reduce(function(a,b){
+        console.log(a,b);
+        return a+b;
+    });
+    console.log(reduce1);
+    /***
+    *3 5
+    *8 7
+    *15 9
+    *24
+    ***/
+    ```
 
 
 
+### 跳出数组
+
+<img src="./img/js_break.jpg" alt="跳出循环" />
+
+::: tip
+forEach, map, filter, every, some, reduce这些迭代方法不会改变源数组
+some 在有true的时候停止
+every 在有false的时候停止
+:::
 
 
 
+### 检测数组
+
+```javascript
+let temp1 = [1,2,4];
+let temp2 = 5;
+
+// instanceof 测试某个对象是否由某个指定的构造器创建
+console.log(temp1 instanceof Array); // true
+console.log(temp2 instanceof Array); //false
+
+// Array.isArray 比instanceof更可靠
+console.log(Array.isArray(temp1)); //true
+console.log(Array.isArray(temp2)); //false
+
+// Object对象的toString()方法，可以返回所创建对象的内部类名
+console.log(Object.prototype.toString.call(temp1)); //[object Array]
+console.log(Object.prototype.toString.call(temp2));// [object Number]
+```
 
 
 
+### 洗牌算法
+
+将一个数组打乱,返回一个打乱的数组
+
+```javascript
+let temp = [1,3,5,6,7,2,4];
+temp.sort(() => {
+  return Math.random() - 0.5;
+})
+console.log(temp);
+```
 
 
+
+### 数组去重 TODO
+
+```javascript
+let temp = [1,3,5,6,7,9,4,3,1,6];
+
+// es6的set方法
+let unique1 = Array.from(new Set(temp));
+console.log(unique1);//[1, 3, 5, 6, 7, 9, 4]
+
+// es6的set方法
+let unique2 = [...new Set(temp)];
+console.log(unique2);//[1, 3, 5, 6, 7, 9, 4]
+
+// 遍历数组法: 
+// 先创建一个新的空数组用来存储新的去重的数组，然后遍历arr数组，在遍历过程中，分别判断newArr数组里面是不是有遍历到的arr中的元素，如果没有，直接添加进newArr中，如果已经有了（重复），那么不操作。
+let newArr = [];
+for(let i=0; i<temp.length;i++){
+    if(newArr.indexOf(temp[i]) === -1){
+        newArr.push(temp[i]);
+    }
+}
+console.log(newArr);//[1, 3, 5, 6, 7, 9, 4]
+
+// 数组下标判断法: 
+// 如果在arr数组里面找当前的值，返回的索引等于当前的循环里面的i的话，那么证明这个值是第一次出现，所以推入到新数组里面，如果后面又遍历到了一个出现过的值，那也不会返回它的索引，indexof()方法只返回找到的第一个值的索引，所以重复的都会被pass掉，只出现一次的值都被存入新数组中。
+let newArr = [];
+for(let i=0; i<temp.length;i++){
+    if(temp.indexOf(temp[i]) === i){
+        newArr.push(temp[i]);
+    }
+}
+console.log(newArr);//[1, 3, 5, 6, 7, 9, 4]
+
+// 排序后相邻去除法: 
+// 先用sort()方法把arr排序，那么排完序后，相同的一定是挨在一起的，把它去掉就好了。首先给新数组初始化一个arr[0]，因为我们要用它和arr数组进行比较，所以，for循环里面i也是从1开始了，我们让遍历到的arr中的值和新数组最后一位进行比较，如果相等，则pass掉，不相等的，push进来
+
+let arr = [1,3,5,6,7,9,4,3,1,6];
+arr.sort();
+let newArr = [arr[0]];
+for(let i=1; i<arr.length;i++){
+    if(arr[i] !== newArr[newArr.length - 1]){
+        newArr.push(arr[i]);
+    }
+}
+console.log(newArr); //[1, 3, 4, 5, 6, 7, 9]
+
+<!-- 双层for循环去重 -->
+let arr = [1,3,5,6,7,9,4,3,1,6];
+for(let i=0; i<arr.length;i++){
+    for(let j=i+1; j<arr.length; j++){
+        if(arr[i] === arr[j]){
+            arr.splice(j,1);
+            j--;
+        }
+    }
+}
+console.log(arr);// [1, 3, 5, 6, 7, 9, 4]
+```
+
+
+
+### 数组去非值
+
+这里的非值指： false, 0，''， null, NaN, undefined
+
+```javascript
+let temp = [1,2,"",4,undefined,5, false,0,null,NaN];
+let newArr = temp.filter((value) => {
+    return value;
+})
+console.log(newArr); //[1,2,4,5]
+```
+
+
+
+### 用数据填充数组
+
+```javascript
+let  arr = new Array(5).fill(1);
+console.log(arr);//[1,1,1,1,1]
+```
+
+
+
+### 数组中获取随机值
+
+根据数组长度获取一个随机索引。
+
+```javascript
+let arr = ['a','b','c','d'];
+let randomIndex = Math.floor(Math.random()*arr.length);
+let randomValue = arr[randomIndex];
+console.log(randomIndex, randomValue); // 2 c
+```
 
 
 
@@ -355,30 +586,16 @@ console.log(find1); //35
 
 ### 数组遍历
 
-1.  **Array.forEach()**
-
-    ```js
-    var arr = ['a', 'b', 'c', 'd'];
-    arr.forEach(function(value, index) {
-        console.log(value, index);
-    })
-    ```
-
-
+1.  **Array.forEach()** 
 2.  **Array.map()**
 
-    ```javascript
-    var arr = ['a', 'b', 'c', 'd'];
-    arr.map(function(value, index, arr) {
-        console.log(value, index);
-    })
-    ```
+### **for 普通循环遍历**
 
-3.  **for 普通循环遍历**
 
-4.  **for...in**
+1.  **for...in**
 
     ```javascript
+    // 性能较好
     var arr = ['a', 'b', 'c', 'd'];
     for (var index in arr) {
         console.log(index, arr[index]);
@@ -393,7 +610,7 @@ console.log(find1); //35
     for (var value of arr) {
         console.log(value);
     })
-    // 只能遍历出value, 不饿能遍历出下标, 可遍历出Symbol数据类型的属性,此方法作为遍历所有数据结构的统一的方法
+    // 只能遍历出value, 不能遍历出下标, 可遍历出Symbol数据类型的属性,此方法作为遍历所有数据结构的统一的方法
     ```
 
 
