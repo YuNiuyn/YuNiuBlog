@@ -1,6 +1,6 @@
 # JavaScipt ES6
 
-[[toc]]
+[toc]
 
 ## 函数调用
 

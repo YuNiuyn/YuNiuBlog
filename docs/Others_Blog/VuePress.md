@@ -1,6 +1,6 @@
 # VuePress 个人学习记录
 
-
+[toc]
 
 [VuePress中文官方文档](https://www.vuepress.cn/)
 

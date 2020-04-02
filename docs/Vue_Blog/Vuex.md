@@ -2,7 +2,7 @@
 
 参考：[Vuex官方网站]( https://vuex.vuejs.org/zh/ )
 
-[[toc]]
+[toc]
 
 ## 简要说明
 

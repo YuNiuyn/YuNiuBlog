@@ -2,15 +2,19 @@ module.exports = {
     title: 'Yu Niu',
     description: 'Life is beautiful',
     head: [
-      ['link', { rel: 'icon', href: '/myicon.ico' }],
+      ['link', { rel: 'icon', href: './panpan.ico' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1'}],
     ],
     base: '/YuNiuBlog/',
+    port: 9494,
+    evergreen: true,
     markdown: {
       lineNumbers: true,
-      toc: { includeLevel: [2, 4] }
+      toc: {
+        "markerPattern": /^\[toc\]/im,
+        "includeLevel": [1,2,3],
+      },
     },
-    port: 9494,
     themeConfig: {
       nav: [
           { text: 'Home', link: '/' },
@@ -28,11 +32,6 @@ module.exports = {
           },
           { text: 'Mini Program', link: '/MiniProgram_Blog/'},
           { text: 'Others', link: '/Others_Blog/'},
-            // items: [
-            //   { text: '微信小程序', link: '/WeChat_miniPro/' },
-            //   { text: '支付宝小程序', link: '/Ali_miniPro/' }
-            // ]
-          // { text: 'About Me', link: 'https://github.com/YuNiuyn' }
       ],
       lastUpdated: 'Last Updated',
       repo: 'YuNiuyn/YuNiuBlog',
@@ -42,7 +41,7 @@ module.exports = {
       docsBranch: 'master',
       editLinks: true,
       editLinkText: '在GitHub上编辑此页',
-      smoothScroll: true,
+      smoothScroll: false,
       sidebar: {
         '/JavaScript_Blog/': [
           '',
@@ -75,16 +74,16 @@ module.exports = {
           'Git',
           'VuePress'
         ],
+      }
+    },
+    plugins: {
+      '@vuepress/back-to-top': {},
+      '@vssue/vuepress-plugin-vssue': {
+        platform: 'github',
+        owner: 'YuNiuyn',
+        repo: 'YuNiuBlog',
+        clientId: '6cb636b554f085a166bd',
+        clientSecret: 'facac7da33bcc4c77bb121810cb9c661a09d1c45',
       },
-      plugins: [
-        '@vuepress/back-to-top',
-        ['@vssue/vuepress-plugin-vssue', {
-          platform: 'github',
-          owner: 'YuNiuyn',
-          repo: 'YuNiuBlog',
-          clientId: '6cb636b554f085a166bd',
-          clientSecret: 'facac7da33bcc4c77bb121810cb9c661a09d1c45',
-        }],
-      ]
-    }
+    },
 };

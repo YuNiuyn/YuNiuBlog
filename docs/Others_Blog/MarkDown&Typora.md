@@ -2,7 +2,7 @@
 
 正在学习MarkDown语法和Typora，简单记录一下，Peace~ 😊
 
-[[toc]]
+[toc]
 
 ## 参考
 

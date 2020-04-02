@@ -2,7 +2,7 @@
 
 Vue Router 是 [Vue.js](http://cn.vuejs.org/) 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。
 
-[[toc]]
+[toc]
 
 [参考](https://router.vuejs.org/zh/)
 
@@ -194,7 +194,7 @@ router.push({ name: 'user', params: { username: 'Gary', post_id: '001' }});
 
 **在 Vue 实例内部，你可以通过 `this.$router` 访问路由实例。**
 
-
+>   声明式：<router-link :to="...">
 
 #### router实例方法
 
@@ -237,9 +237,10 @@ router.push({ path: 'register', query: { plan: 'private' }})
 ```javascript
 const userId = '123'
 // 可以通过名称来标识一个路由，在创建Router实例时，在routes配置中给某个路由设置名称。
+// 使用以下两种方式来添加 params
 router.push({ name: 'user', params: { userId }}) // -> /user/123
 router.push({ path: `/user/${userId}` }) // -> /user/123
-// 这里的 params 不生效
+// 以下的 params 不生效
 router.push({ path: '/user', params: { userId }}) // -> /user
 ```
 
