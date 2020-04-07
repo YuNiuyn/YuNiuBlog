@@ -32,7 +32,7 @@ Vue Router 是 [Vue.js](http://cn.vuejs.org/) 官方的路由管理器。它和 
 
 1.  项目根目录下，`src` 文件夹，`router` 文件夹下，建立`routes.js` 文件。
 
-    文件结构如下图： ![img](./Vue_img/vuerouter_1.png)
+    文件结构如下图： ![img](C:/Users/NiuYu/Desktop/Vue_img/vuerouter_1.png)
 
 2.  `main.js` 文件
 
@@ -41,18 +41,17 @@ Vue Router 是 [Vue.js](http://cn.vuejs.org/) 官方的路由管理器。它和 
 import Vue from 'vue'
 import App from './App'
 
-// ********* 引入router文件夹 **************
+// 引入router文件夹
 import router from './router'
-// ***************************************
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+// eslint-disable no-new
 new Vue({
     el: '#app',
-    // ****** 将router标识出来 *****
+    // 将router标识出来
     router,
-    // ***************************
+    
     components: { App },
     template: '<App/>'
 })
@@ -99,8 +98,6 @@ export default [
 
 
 
-
-
 通过注入路由器，我们可以在任何组件内通过 `this.$router` 访问路由器，也可以通过 `this.$route` 访问当前路由。
 
 
@@ -116,8 +113,6 @@ export default [
 因为我们的应用是个单页客户端应用，所以需要后台正确的配置支持。否则容易404.
 
 所以要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 `index.html` 页面，这个页面就是 app 依赖的页面。
-
-
 
 
 
@@ -188,19 +183,17 @@ router.push({ name: 'user', params: { username: 'Gary', post_id: '001' }});
 
 
 
-
-
 ## 编程式导航
 
 **在 Vue 实例内部，你可以通过 `this.$router` 访问路由实例。**
 
->   声明式：<router-link :to="...">
+>   声明式：`<router-link :to="...">`
 
-#### router实例方法
+### router实例方法
 
 >   Vue Router 的导航方法 (`push`、 `replace`、 `go`) 在各类路由模式 (`history`、 `hash` 和 `abstract`) 下表现一致。
 
-```js
+```javascript
 // 向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL。
 router.push(location, onComplete?, onAbort?)
 router.push(location).then(onComplete).catch(onAbort)
@@ -216,7 +209,9 @@ router.replace(location).then(onComplete).catch(onAbort)
 router.go(n)
 ```
 
-#### 关于router.push和router-link 组件的 `to` 属性
+
+
+### 关于router.push和router-link 组件的 `to` 属性
 
 ```javascript
 // 字符串

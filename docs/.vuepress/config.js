@@ -52,7 +52,7 @@ module.exports = {
         '/Vue_Blog/': [
           '',
           'Vue.js',
-          'Vue Router',
+          'VueRouter',
           'Vuex'
         ],
         '/NodeJS_Blog/': [
