@@ -133,3 +133,44 @@ boundGetX(); // 81
 -    Generator函数是ES6提供的一种异步编程解决方案
 -    await就是generator里的yield
 
+
+
+## Object
+
+
+
+### object.assign(target, ...sources)
+
+- 用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。
+- target: 目标对象, sources: 源对象
+
+-   第一级属性深拷贝，从第二级属性开始就是浅拷贝。
+
+```javascript
+// 合并具有相同属性的对象
+const o1 = { a: 1, b: 1, c: 1 };
+const o2 = { b: 2, c: 2 };
+const o3 = { c: 3 };
+
+const obj = Object.assign({}, o1, o2, o3);
+console.log(obj); // { a: 1, b: 2, c: 3 }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

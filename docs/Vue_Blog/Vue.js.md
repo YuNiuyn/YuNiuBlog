@@ -1,6 +1,8 @@
-# Vue的生命周期
+# Vue.js
 
 [toc]
+
+# Vuejs生命周期
 
 ## 官方图例
 
@@ -284,4 +286,144 @@ computed: {
 
 
 
-# Vue 组件
+# 全局API
+
+
+
+
+
+
+## Vue.set( target, propertyName/index, value )
+
+- **参数**：
+  
+    - `{Object | Array} target`
+    - `{string | number} propertyName/index`
+    - `{any} value`
+
+- **返回值**：设置的值。
+
+- **用法**：
+
+    向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性 (比如 this.myObject.newProperty = 'hi')
+
+::: danger
+注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。
+:::
+
+-   **示例**
+
+```javascript
+data() { // data数据
+    return {
+      arr: [1,2,3],
+      obj:{
+          a: 1,
+          b: 2
+      }
+    };
+  },
+// 1、利用索引直接设置数组的某一项时， 数据更新 数组视图不更新 
+this.arr[0] = 'OBKoro1';
+this.arr.length = 1;
+console.log(arr);  // ['OBKoro1'];
+// 2、修改数组的长度时,  数据更新 对象视图不更新
+this.obj.c = 'OBKoro1';
+console.log(obj);  // {b:2,c:'OBKoro1'}
+```
+
+>   Vue 不能检测以上数组的变动，以及对象的添加/删除
+
+-   **解决办法**
+
+```javascript
+
+this.$set(this.data, key, value);
+Vue.set(target, key, value);
+vm.$set(target, key, value);
+
+// 数组原生方法触发视图更新
+splice()、 push()、pop()、shift()、unshift()、sort()、reverse()
+```
+
+[从源码解析Vue.set和this.$set的区别](https://www.jb51.net/article/146580.htm)
+
+
+
+## Vue.nextTick( [callback, context\] )
+
+-   **参数**：
+
+    -   `{Function} [callback]`
+    -   `{Object} [context]`
+
+-   **用法**：
+
+    在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+
+    ```javascript
+    // 修改数据
+    vm.msg = 'Hello'
+    // DOM 还没有更新
+    Vue.nextTick(function () {
+      // DOM 更新了
+    })
+    
+    // 作为一个 Promise 使用 (2.1.0 起新增，详见接下来的提示)
+    Vue.nextTick()
+      .then(function () {
+        // DOM 更新了
+      })
+    ```
+
+    >   2.1.0 起新增：如果没有提供回调且在支持 Promise 的环境中，则返回一个 Promise。请注意 Vue 不自带 Promise 的 polyfill.
+    >
+    >   如果目标浏览器不原生支持 Promise (IE：你们都看我干嘛)，需要提供 polyfill。
+    >
+    >   （hhh, 来自大佬的吐槽）
+
+-   **示例**
+    -   **问题**：swiper与vue结合使用时，会出现loop循环失效、dom渲染、顺序出错、自动循环失效等问题。
+    -   **原因**：
+        -   vue更新DOM时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。
+        -   在页面加载初始时，网络请求的数据还没有加载完成，DOM也没有更新完成，此时swiper已初始化完成，导致swiper的有些属性并没有及时的绑定到全部的DOM上去。
+    -   **解决办法**
+
+```javascript
+// swiper方法
+var mySwiper = new Swiper('.swiper-container', {
+    observer: true, // 修改swiper自己或子元素时，自动初始化swiper
+    observeParents: true, // 修改swiper的父元素时，自动初始化swiper
+})
+
+// vue.nextTick
+// 此时另一种最为有效的方法为在vue请求到数据更新完DOM后再进行swiper的初始化
+var vm = new Vue({
+    el: '#app',
+    data: {},
+    created() {
+        axios.get().then((res) => {
+            Vue.nextTick(function () { // 在下次 DOM 更新循环结束之后执行延迟回调
+                window.initSwiper(); // 这时再初始化swiper
+            })
+            // 或者在组件内部可使用 vm.$nextTick(),this.$nextTick()
+            // 因为它不需要全局 Vue，并且回调函数中的 this 将自动绑定到当前的 Vue 实例上
+            // $nextTick 返回一个Promise对象，可使用async和await
+        })
+    },
+    // ...
+})
+
+function initSwiper() {
+     // swiper5
+    new Swiper ('#swiper', {
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        observer: true, // 也需要加上observer
+        observeParents: true // 也需要加上observeParents
+    })
+}
+```

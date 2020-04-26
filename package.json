@@ -13,7 +13,8 @@
     "markdown-it": "^10.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
     "mermaid": "^8.4.8",
-    "vuepress": "^1.4.0"
+    "vuepress": "^1.4.0",
+    "vuepress-plugin-comment": "^0.7.3"
   },
   "devDependencies": {
     "@vssue/vuepress-plugin-vssue": "^1.4.3",
@@ -32,5 +33,5 @@
   },
   "keywords": [],
   "author": "YuNiu",
-  "license": "ISC"
+  "license": "MIT"
 }

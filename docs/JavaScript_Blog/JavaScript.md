@@ -4,6 +4,10 @@
 
 
 
+## js中的对象
+
+### Object上的方法
+
 ## js中的数组
 
 [Reference](https://mp.weixin.qq.com/s/Y_kEQstEeBh_lg5puHiLbg)
@@ -589,7 +593,7 @@ console.log(randomIndex, randomValue); // 2 c
 1.  **Array.forEach()** 
 2.  **Array.map()**
 
-### **for 普通循环遍历**
+### for 普通循环遍历
 
 
 1.  **for...in**

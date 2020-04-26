@@ -20,18 +20,19 @@ module.exports = {
           { text: 'Home', link: '/' },
           { text: 'Front End',
             items: [
-              { text: 'JavaScript', link: '/JavaScript_Blog/'},
+              { text: 'JavaScript', link: '/JavaScript_Blog/' },
+              { text: 'CSS', link: '/CSS_Blog/' }
             ]
           },
           { text: 'Project',
             items: [
               { text: 'Vue', link: '/Vue_Blog/' },
-              { text: 'NodeJS', link: '/NodeJS_Blog/'},
+              { text: 'NodeJS', link: '/NodeJS_Blog/' },
               { text: 'Webpack', link: '/Webpack_Blog/' },
             ]
           },
-          { text: 'Mini Program', link: '/MiniProgram_Blog/'},
-          { text: 'Others', link: '/Others_Blog/'},
+          { text: 'Mini Program', link: '/MiniProgram_Blog/' },
+          { text: 'Others', link: '/Others_Blog/' },
       ],
       lastUpdated: 'Last Updated',
       repo: 'YuNiuyn/YuNiuBlog',
@@ -48,6 +49,9 @@ module.exports = {
           'JavaScript',
           'jsES6',
           'jsWEB'
+        ],
+        '/CSS_Blog/': [
+          'CSS'
         ],
         '/Vue_Blog/': [
           '',
@@ -85,5 +89,14 @@ module.exports = {
         clientId: '6cb636b554f085a166bd',
         clientSecret: 'facac7da33bcc4c77bb121810cb9c661a09d1c45',
       },
+      // 'vuepress-plugin-comment': {
+      //   choosen: 'valine', 
+      //   // options选项中的所有参数，会传给Valine的配置
+      //   options: {
+      //     el: '#valine-vuepress-comment',
+      //     appId: '6cb636b554f085a166bd',
+      //     appKey: 'facac7da33bcc4c77bb121810cb9c661a09d1c45'
+      //   }
+      // }
     },
 };
