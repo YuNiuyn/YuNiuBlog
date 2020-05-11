@@ -2,7 +2,7 @@ module.exports = {
     title: 'Yu Niu',
     description: 'Life is beautiful',
     head: [
-      ['link', { rel: 'icon', href: './panpan.ico' }],
+      ['link', { rel: 'icon', href: '/docs/.vuepress/public/panpan.ico', size: '32x32' }],
       ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1'}],
     ],
     base: '/YuNiuBlog/',
