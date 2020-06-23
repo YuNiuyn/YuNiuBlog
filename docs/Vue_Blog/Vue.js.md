@@ -715,5 +715,149 @@ methods: {
     })
     ```
 
+
+
+
+#### 组件通信
+
+
+
+一、**通过prop实现通信（父组件 =》子组件）**
+
+-   子组件的props选项只能接收来自父组件数据。
+
+-   主要用来数据传递，不能调用子组件的属性和方法
+
+```vue
+<!-- 子组件 -->
+<template>
+	<h3>{{message}}</h3>
+</template>
+<script>
+    export default {
+        props: ['message'] // 声明一个自定义属性
+    }
+</script>
+```
+
+
+
+1.  静态传递
+
+```vue
+<!-- 父组件 -->
+<template>
+	<div>
+    	<child message="I'm childComponent 1"></child>
+    </div>
+</template>
+<script>
+    import child from '../components/child.vue';
+    export default {
+        components: {Child}
+    }
+</script>
+```
+
+
+
+2.  动态传递
+
+```vue
+<template>
+	<div>
+        <child v-bind:message="msg"></child>
+    </div>
+</template>
+<script>
+    import child from '../components/child.vue';
+    export default {
+        components: {Child},
+        data() {
+            return {
+                msg: "子组件动态传值" + Math.random()
+            }
+        }
+    }
+</script>
+```
+
+
+
+二、**通过$ref实现通信（父组件 =》子组件）**
+
+-   一个对象，持有注册过 `ref` attribute 的所有 DOM 元素和组件实例。在`JavaScript`里直接访问一个子组件。
+
+-   主要用来调用组件的属性和方法
+
+```vue
+// 通过 ref 这个 attribute 为子组件赋予一个 ID 引用。
+<base-input ref="usernameInput"></base-input>
+// 组件内部
+<input ref="input"></input>
+
+
+<script>
+    // 使用以下访问此组件
+    this.$refs.usernameInput
+    // 使用以下从一个父级组件聚焦这个输入框
+    this.$refs.input.focus()
     
+    methods: {
+      // 用来从父级组件聚焦输入框
+      focus: function () {
+        this.$refs.input.focus()
+      }
+    }
+    // 允许父级组件聚焦输入框
+    this.$refs.usernameInput.focus()
+</script>
+
+```
+
+
+
+三、**通过$emit 实现通信（子组件 =》父组件）**
+
+```vue
+<!-- 父组件 -->
+<template>
+	<div>
+        <h1>{{title}}</h1>
+        <child @getMessage="showMsg"></child>
+    </div>
+</template>
+<script>
+    import Child from '../components/child.vue'
+    export default {
+    	components: {Child},
+   		data(){
+    		return{
+    			title:''
+    		}
+    	},
+    	methods:{
+    		showMsg(title){
+    			this.title=title;
+    		}
+    	}
+    }
+</script>
+
+<!-- 子组件 -->
+<template>
+	<div>
+        <h3>子组件</h3>
+    </div>
+</template>
+<script>
+    export default {
+    	mounted: function() {
+            this.$emit('getMessage', '父组件')
+        }
+    }
+</script>
+```
+
+
 

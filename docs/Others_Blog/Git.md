@@ -76,3 +76,15 @@ git reset
 git push origin master -f
 ```
 
+
+
+
+
+
+
+## GIT相关收藏
+
+[GIT 工作流 作者：*Lydia Hallie*](https://mp.weixin.qq.com/s?__biz=MzIzMTE1ODkyNQ==&mid=2649412898&idx=1&sn=e3f12c03fde24a60008ad7ccae6c6e34&chksm=f0b610c0c7c199d6ef060c10ee4da782fc49f94ed72cfc5cbc67b4e2d56fe745d599b3a19fdb&scene=126&sessionid=1589192356&key=974eeeca00c2ed2b58fdcfdcd7de97d8554093120d3099a6123379b925fa4ecdc24d3bc3dfc40c178fc08b16385eb5fbb080e5b04ac4fc0595c3fa3bcda5b9a5859dd6ab8bca85937a0056955434301a&ascene=1&uin=MTIwMzQ5NDI2MQ%3D%3D&devicetype=Windows+10+x64&version=62090069&lang=zh_CN&exportkey=AZYrMp8qpD0mMEJyCZOGqRQ%3D&pass_ticket=LgoOz2p4%2FyW8SNMVrzwQH3mxc0NPwaULarWQDZqSNiUuH2rX9gsXA0hYrC5byddz)
+
+[GIT 备忘录 作者：Tong Obama](https://juejin.im/post/5eb2d6bce51d454d9d3ed14f)
+

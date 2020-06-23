@@ -244,6 +244,14 @@ export default [
 
 
 
+-   hash 模式下，仅 hash 符号之前的内容会被包含在请求中，因此对于后端来说，即使没有做到对路由的全覆盖，也不会返回 404 错误。
+-   history 模式下，前端的 URL 必须和实际向后端发起请求的 URL 一致。如果后端缺少对url后续路径的路由处理，将返回 404 错误。
+    -   为避免404，服务端可定义一个index.html，如果有问题，则始终返回index.html。
+    -   或在`src/router/index.js`里最后定义一个404页面。
+    -   或在`src/router/index.js`里添加一个匹配任意路径路由定义404页面。
+
+
+
 ## 监听路由变化
 
 ```javascript

@@ -876,18 +876,216 @@ function isEmpty(value) {
 
 ## 函数防抖（debounce）和函数节流（throttle）
 
+[参考](https://www.jianshu.com/p/c8b86b09daf0)
 
+在实际前端开发过程中，经常会需要绑定一些持续触发的事件，如 resize、scroll、mousemove 等等，但是在事件持续触发的过程中频繁地去执行函数会影响性能。
 
 ### 防抖（debounce）
 
+**触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。**
 
 
 
+防抖函数分为 `非立即执行版` 和 `立即执行版`。
+
+
+
+-   非立即执行版: 触发事件后函数不会立即执行，而是在 n 秒后执行，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。
+
+```javascript
+function debounce(func, wait) {
+    let timeout;
+    return function () {
+        let context = this;
+        let args = arguments;
+
+        if (timeout) clearTimeout(timeout);
+        
+        timeout = setTimeout(() => {
+            func.apply(context, args)
+        }, wait);
+    }
+}
+// 需要注意的是 this 和 参数的传递
+let context = this;
+let args = arguments;
+// 防抖函数的代码使用这两行代码来获取 this 和 参数，是为了让 debounce 函数最终返回的函数 this 指向不变以及依旧能接受到 e 参数。
+```
+
+```javascript
+// onmousemove 绑定content 鼠标移动事件可以这样使用
+content.onmousemove = debounce(count,1000);
+```
+
+
+
+
+
+-   立即执行版: 触发事件后函数会立即执行，然后 n 秒内不触发事件才能继续执行函数的效果。
+
+```javascript
+function debounce(func,wait) {
+    let timeout;
+    return function () {
+        let context = this;
+        let args = arguments;
+
+        if (timeout) clearTimeout(timeout);
+
+        let callNow = !timeout;
+        timeout = setTimeout(() => {
+            timeout = null;
+        }, wait)
+
+        if (callNow) func.apply(context, args)
+    }
+}
+```
+
+
+
+-   结合版
+
+```javascript
+/**
+ * @desc 函数防抖
+ * @param func 函数
+ * @param wait 延迟执行毫秒数
+ * @param immediate true 表示立即执行，false 表示非立即执行
+ */
+function debounce(func,wait,immediate) {
+    let timeout;
+
+    return function () {
+        let context = this;
+        let args = arguments;
+
+        if (timeout) clearTimeout(timeout);
+        if (immediate) {
+            var callNow = !timeout;
+            timeout = setTimeout(() => {
+                timeout = null;
+            }, wait)
+            if (callNow) func.apply(context, args)
+        }
+        else {
+            timeout = setTimeout(function(){
+                func.apply(context, args)
+            }, wait);
+        }
+    }
+}
+```
 
 
 
 ### 节流（throttle）
 
+**连续触发事件但是在 n 秒中只执行一次函数。**节流会稀释函数的执行频率。
+
+对于节流，一般有两种方式可以实现，分别是时间戳版和定时器版。
+
+-   时间戳版：
+
+```js
+function throttle(func, wait) {
+    let previous = 0;
+    return function() {
+        let now = Date.now();
+        let context = this;
+        let args = arguments;
+        if (now - previous > wait) {
+            func.apply(context, args);
+            previous = now;
+        }
+    }
+}
+```
+
+
+
+-   定时器版:
+
+```jsx
+function throttle(func, wait) {
+    let timeout;
+    return function() {
+        let context = this;
+        let args = arguments;
+        if (!timeout) {
+            timeout = setTimeout(() => {
+                timeout = null;
+                func.apply(context, args)
+            }, wait)
+        }
+
+    }
+}
+```
+
+在持续触发事件的过程中，函数不会立即执行，并且每 1s 执行一次，在停止触发事件后，函数还会再执行一次。
+
+时间戳版和定时器版的节流函数的区别是，时间戳版的函数触发是在时间段内开始的时候，而定时器版的函数触发是在时间段内结束的时候。
+
+
+
+- 结合版：
+
+```js
+/**
+ * @desc 函数节流
+ * @param func 函数
+ * @param wait 延迟执行毫秒数
+ * @param type 1 = 时间戳版，2 = 定时器版
+ */
+function throttle(func, wait ,type) {
+    if (type===1) {
+        let previous = 0;
+    }else if (type===2) {
+        let timeout;
+    }
+    return function() {
+        let context = this;
+        let args = arguments;
+        if (type===1) {
+            let now = Date.now();
+
+            if (now - previous > wait) {
+                func.apply(context, args);
+                previous = now;
+            }
+        } else if (type===2) {
+            if (!timeout) {
+                timeout = setTimeout(() => {
+                    timeout = null;
+                    func.apply(context, args)
+                }, wait)
+            }
+        }
+    }
+}
+```
+
+
+
+## 事件冒泡，事件捕获
+
+<img src="./img/bubblecatch.jpg" alt="事件阶段" style="zoom:80%;" />
+
+##### （1）捕获阶段（Capture Phase）
+
+事件的第一个阶段是捕获阶段。事件从文档的根节点流向目标对象节点。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达事件的目标节点。捕获阶段的主要任务是建立传播路径，在冒泡阶段，事件会通过这个路径回溯到文档跟节点。
+
+##### （2）目标阶段（Target Phase）
+
+当事件到达目标节点的，事件就进入了目标阶段。事件在目标节点上被触发，然后会逆向回流，直到传播至最外层的文档节点。
+
+##### （3）冒泡阶段（Bubble Phase）
+
+事件在目标元素上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，回溯到根节点。
+ 冒泡过程非常有用。它将我们从对特定元素的事件监听中释放出来，如果没有事件冒泡，我们需要监听很多不同的元素来确保捕获到想要的事件。
+
+[参考](https://www.jianshu.com/p/8311f782f70d)
 
 
 
@@ -895,4 +1093,21 @@ function isEmpty(value) {
 
 
 
+
+
+## 事件委托和事件代理
+
+[参考](https://www.jianshu.com/p/a77d8928c5c9)
+
+-   什么是事件委托？
+
+    事件委托还有一个名字叫事件代理，JS高程上讲：事件委托就是利用事件冒泡，只制定一个时间处理程序，就可以管理某一类型的所有事件。
+
+-   为什么要用事件委托
+
+    在JavaScript中，添加到页面上的事件处理程序数量将直接关系到页面的整体运行性能，因为需要不断的与dom节点进行交互，访问dom的次数越多，引起浏览器重绘与重排的次数也就越多，就会延长整个页面的交互就绪时间，这就是性能优化的主要思想之一，减少DOM操作；每个函数都是一个对象，是对象就会占用内存，对象越多，内存占用率越大，100个li就要占用100个内存空间。如果要用事件委托，就会将所有的操作放到js程序里面，只对它的父级(如果只有一个父级)这一个对象进行操作，与dom的操作就只需要交互一次，这样就能大大的减少与dom的交互次数，提高性能；
+
+-   事件委托的原理
+
+    事件委托是利用事件的冒泡原理来实现的。事件冒泡就是事件从最深的节点开始，然后逐步向上传播事件。例如：最里层的层级点击事件会冒泡到最外层的层级上，然后委托最外层的父级代为处理点击事件。
 
