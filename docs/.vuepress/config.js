@@ -48,7 +48,8 @@ module.exports = {
           '',
           'JavaScript',
           'jsES6',
-          'jsWEB'
+          'jsWEB',
+          'DesignPatterns'
         ],
         '/CSS_Blog/': [
           'CSS'
