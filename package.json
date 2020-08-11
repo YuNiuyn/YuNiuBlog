@@ -14,7 +14,8 @@
     "markdown-it-table-of-contents": "^0.4.4",
     "mermaid": "^8.4.8",
     "vuepress": "^1.4.0",
-    "vuepress-plugin-comment": "^0.7.3"
+    "vuepress-plugin-comment": "^0.7.3",
+    "lodash": ">=4.17.19"
   },
   "devDependencies": {
     "@vssue/vuepress-plugin-vssue": "^1.4.3",
@@ -23,13 +24,14 @@
     "markdown-it": "^10.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
     "mermaid": "^8.4.8",
-    "vuepress": "^1.4.0"
+    "vuepress": "^1.4.0",
+    "lodash": ">=4.17.19"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "bash deploy.sh"
+    "deploy": ".\\deploy.sh"
   },
   "keywords": [],
   "author": "YuNiu",

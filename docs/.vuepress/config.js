@@ -58,7 +58,8 @@ module.exports = {
           '',
           'Vue.js',
           'VueRouter',
-          'Vuex'
+          'Vuex',
+          'VueCli'
         ],
         '/NodeJS_Blog/': [
           '',
@@ -83,13 +84,13 @@ module.exports = {
     },
     plugins: {
       '@vuepress/back-to-top': {},
-      '@vssue/vuepress-plugin-vssue': {
-        platform: 'github',
-        owner: 'YuNiuyn',
-        repo: 'YuNiuBlog',
-        clientId: '6cb636b554f085a166bd',
-        clientSecret: 'facac7da33bcc4c77bb121810cb9c661a09d1c45',
-      },
+      // '@vssue/vuepress-plugin-vssue': {
+      //   platform: 'github',
+      //   owner: 'YuNiuyn',
+      //   repo: 'YuNiuBlog',
+      //   clientId: '6cb636b554f085a166bd',
+      //   clientSecret: 'facac7da33bcc4c77bb121810cb9c661a09d1c45',
+      // },
       // 'vuepress-plugin-comment': {
       //   choosen: 'valine', 
       //   // options选项中的所有参数，会传给Valine的配置
